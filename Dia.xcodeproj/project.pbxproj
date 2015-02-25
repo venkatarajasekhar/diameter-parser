@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		910A5B3F149626CB00269967 /* IPPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 910A5B3E149626CB00269967 /* IPPacket.cpp */; };
+		910A5B44149626F700269967 /* DiameterPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 910A5B43149626F700269967 /* DiameterPacket.cpp */; };
+		910A5B461496308700269967 /* AVPItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 910A5B451496308700269967 /* AVPItem.cpp */; };
+		910A5B4A1496445100269967 /* DiameterDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 910A5B491496445100269967 /* DiameterDictionary.cpp */; };
+		919A75821434897B00E60B8D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919A75811434897B00E60B8D /* main.cpp */; };
+		919A75841434897B00E60B8D /* Dia.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 919A75831434897B00E60B8D /* Dia.1 */; };
+		91BF617C149653C900F54ED7 /* AVP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91BF617B149653C900F54ED7 /* AVP.cpp */; };
+		91F96F4614891D1F005242BF /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F96F4514891D1F005242BF /* utils.cpp */; };
+		91FE0D65143497E4009594DF /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FE0D64143497E4009594DF /* tests.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		919A757B1434897B00E60B8D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				919A75841434897B00E60B8D /* Dia.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		910757B11434983B00B4DE5E /* tests.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tests.hpp; sourceTree = "<group>"; };
+		910A5B3E149626CB00269967 /* IPPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPPacket.cpp; sourceTree = "<group>"; };
+		910A5B41149626DA00269967 /* IPPacket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPPacket.hpp; sourceTree = "<group>"; };
+		910A5B42149626F100269967 /* DiameterPacket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiameterPacket.hpp; sourceTree = "<group>"; };
+		910A5B43149626F700269967 /* DiameterPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiameterPacket.cpp; sourceTree = "<group>"; };
+		910A5B451496308700269967 /* AVPItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AVPItem.cpp; sourceTree = "<group>"; };
+		910A5B471496308F00269967 /* AVPItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AVPItem.hpp; sourceTree = "<group>"; };
+		910A5B491496445100269967 /* DiameterDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiameterDictionary.cpp; sourceTree = "<group>"; };
+		9182AEB51486613E00E26687 /* ethertype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethertype.h; sourceTree = "<group>"; };
+		9182AEB814866AC500E26687 /* ether.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ether.h; sourceTree = "<group>"; };
+		9182AEB914866AC500E26687 /* ip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip.h; sourceTree = "<group>"; };
+		9182AEBA14866AC500E26687 /* tcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp.h; sourceTree = "<group>"; };
+		919A757D1434897B00E60B8D /* Dia */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Dia; sourceTree = BUILT_PRODUCTS_DIR; };
+		919A75811434897B00E60B8D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		919A75831434897B00E60B8D /* Dia.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dia.1; sourceTree = "<group>"; };
+		919A758B143489E700E60B8D /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		919A758C143489E700E60B8D /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		919A758D143489E700E60B8D /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		919A758E143489E700E60B8D /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		91BF61791496448600F54ED7 /* DiameterDictionary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiameterDictionary.hpp; sourceTree = "<group>"; };
+		91BF617A149653BD00F54ED7 /* AVP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AVP.hpp; sourceTree = "<group>"; };
+		91BF617B149653C900F54ED7 /* AVP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AVP.cpp; sourceTree = "<group>"; };
+		91F863261487867600C730A9 /* diameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diameter.h; sourceTree = "<group>"; };
+		91F96F4414891D11005242BF /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		91F96F4514891D1F005242BF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		91FE0D64143497E4009594DF /* tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		919A757A1434897B00E60B8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9182AEB714866A8300E26687 /* tcpdump */ = {
+			isa = PBXGroup;
+			children = (
+				9182AEB814866AC500E26687 /* ether.h */,
+				91F863261487867600C730A9 /* diameter.h */,
+				9182AEB914866AC500E26687 /* ip.h */,
+				9182AEBA14866AC500E26687 /* tcp.h */,
+				9182AEB51486613E00E26687 /* ethertype.h */,
+			);
+			name = tcpdump;
+			sourceTree = "<group>";
+		};
+		919A75721434897A00E60B8D = {
+			isa = PBXGroup;
+			children = (
+				91BAFD85143B4AA9004FE55B /* Data */,
+				919A75801434897B00E60B8D /* Dia */,
+				919A757E1434897B00E60B8D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		919A757E1434897B00E60B8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				919A757D1434897B00E60B8D /* Dia */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		919A75801434897B00E60B8D /* Dia */ = {
+			isa = PBXGroup;
+			children = (
+				9182AEB714866A8300E26687 /* tcpdump */,
+				919A758A143489BC00E60B8D /* RapidXML */,
+				919A75811434897B00E60B8D /* main.cpp */,
+				919A75831434897B00E60B8D /* Dia.1 */,
+				91FE0D64143497E4009594DF /* tests.cpp */,
+				910757B11434983B00B4DE5E /* tests.hpp */,
+				91F96F4414891D11005242BF /* utils.hpp */,
+				91F96F4514891D1F005242BF /* utils.cpp */,
+				910A5B41149626DA00269967 /* IPPacket.hpp */,
+				910A5B3E149626CB00269967 /* IPPacket.cpp */,
+				910A5B42149626F100269967 /* DiameterPacket.hpp */,
+				910A5B43149626F700269967 /* DiameterPacket.cpp */,
+				910A5B471496308F00269967 /* AVPItem.hpp */,
+				910A5B451496308700269967 /* AVPItem.cpp */,
+				91BF617A149653BD00F54ED7 /* AVP.hpp */,
+				91BF617B149653C900F54ED7 /* AVP.cpp */,
+				91BF61791496448600F54ED7 /* DiameterDictionary.hpp */,
+				910A5B491496445100269967 /* DiameterDictionary.cpp */,
+			);
+			path = Dia;
+			sourceTree = "<group>";
+		};
+		919A758A143489BC00E60B8D /* RapidXML */ = {
+			isa = PBXGroup;
+			children = (
+				919A758B143489E700E60B8D /* rapidxml_iterators.hpp */,
+				919A758C143489E700E60B8D /* rapidxml_print.hpp */,
+				919A758D143489E700E60B8D /* rapidxml_utils.hpp */,
+				919A758E143489E700E60B8D /* rapidxml.hpp */,
+			);
+			name = RapidXML;
+			sourceTree = "<group>";
+		};
+		91BAFD85143B4AA9004FE55B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		919A757C1434897B00E60B8D /* Dia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 919A75871434897B00E60B8D /* Build configuration list for PBXNativeTarget "Dia" */;
+			buildPhases = (
+				919A75791434897B00E60B8D /* Sources */,
+				919A757A1434897B00E60B8D /* Frameworks */,
+				919A757B1434897B00E60B8D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dia;
+			productName = Dia;
+			productReference = 919A757D1434897B00E60B8D /* Dia */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		919A75741434897A00E60B8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 919A75771434897A00E60B8D /* Build configuration list for PBXProject "Dia" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 919A75721434897A00E60B8D;
+			productRefGroup = 919A757E1434897B00E60B8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				919A757C1434897B00E60B8D /* Dia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		919A75791434897B00E60B8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919A75821434897B00E60B8D /* main.cpp in Sources */,
+				91FE0D65143497E4009594DF /* tests.cpp in Sources */,
+				91F96F4614891D1F005242BF /* utils.cpp in Sources */,
+				910A5B3F149626CB00269967 /* IPPacket.cpp in Sources */,
+				910A5B44149626F700269967 /* DiameterPacket.cpp in Sources */,
+				910A5B461496308700269967 /* AVPItem.cpp in Sources */,
+				910A5B4A1496445100269967 /* DiameterDictionary.cpp in Sources */,
+				91BF617C149653C900F54ED7 /* AVP.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		919A75851434897B00E60B8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		919A75861434897B00E60B8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		919A75881434897B00E60B8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options",
+					"-lboost_serialization",
+					"-lboost_regex",
+					"-lpcap",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		919A75891434897B00E60B8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options",
+					"-lboost_serialization",
+					"-lboost_regex",
+					"-lpcap",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		919A75771434897A00E60B8D /* Build configuration list for PBXProject "Dia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				919A75851434897B00E60B8D /* Debug */,
+				919A75861434897B00E60B8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		919A75871434897B00E60B8D /* Build configuration list for PBXNativeTarget "Dia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				919A75881434897B00E60B8D /* Debug */,
+				919A75891434897B00E60B8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 919A75741434897A00E60B8D /* Project object */;
+}

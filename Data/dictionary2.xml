@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+		<avp name="User-Name" code="1" mandatory="must">
+			<type type-name="UTF8String"/>
+		</avp>
+		<avp name="User-Password" code="2" mandatory="may">
+			<type type-name="OctetString"/>
+		</avp>
+		<avp name="CHAP-Password" code="3" mandatory="may">
+			<type type-name="OctetString"/>
+		</avp>
+		<avp name="NAS-IP-Address" code="4" mandatory="may">
+			<type type-name="OctetString"/>
+		</avp>
+		<avp name="NAS-Port" code="5" mandatory="may">
+			<type type-name="Integer32"/>
+		</avp>
+		<avp name="Service-Type" code="6">
+			<type type-name="Unsigned32"/>
+			<enum name="Login" code="1"/>
+			<enum name="Framed" code="2"/>
+			<enum name="Callback-Login" code="3"/>
+			<enum name="Callback-Framed" code="4"/>
+			<enum name="Outbound" code="5"/>
+			<enum name="Administrative" code="6"/>
+			<enum name="NAS-Prompt" code="7"/>
+			<enum name="Authenticate-Only" code="8"/>
+			<enum name="Callback-NAS-Prompt" code="9"/>
+			<enum name="Call Check" code="10"/>
+			<enum name="Callback Administrative" code="11"/>
+			<enum name="Voice" code="12"/>
+			<enum name="Fax" code="13"/>
+			<enum name="Modem Relay" code="14"/>
+			<enum name="IAPP-Register" code="15"/>
+			<enum name="IAPP-AP-Check" code="16"/>
+			<enum name="Authorize Only" code="17"/>
+		</avp>
+		<avp name="Framed-Protocol" code="7">
+			<type type-name="Unsigned32"/>
+			<enum name="ARA" code="3"/>
+			<enum name="Ascend-ARA" code="255"/>
+			<enum name="COMB" code="260"/>
+			<enum name="EURAW" code="257"/>
+			<enum name="EUUI" code="258"/>
+			<enum name="FR" code="261"/>
+			<enum name="Gandalf" code="4"/>
+			<enum name="MPP" code="256"/>
+			<enum name="PPP" code="1"/>
+			<enum name="SLIP" code="2"/>
+			<enum name="X25" code="259"/>
+			<enum name="Xylogics" code="5"/>
+		</avp>
+		<avp name="Framed-IP-Address" code="8" mandatory="may">
+			<type type-name="IPAddress"/>
+		</avp>
+		<avp name="Framed-IP-Netmask" code="9" mandatory="may">
+			<type type-name="IPAddress"/>
+		</avp>
+</dictionary>

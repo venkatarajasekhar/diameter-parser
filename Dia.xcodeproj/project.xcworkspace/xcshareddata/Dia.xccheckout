@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>876DFB1E-81A9-47F0-A83B-DDE63AE911B8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Dia</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>41CA5ED85421337CA35E687CF3AF9F41B916AA5B</key>
+		<string>bitbucket.org:trimob/blacklisted-diameter-parser.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Dia.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>41CA5ED85421337CA35E687CF3AF9F41B916AA5B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:trimob/blacklisted-diameter-parser.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>41CA5ED85421337CA35E687CF3AF9F41B916AA5B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>41CA5ED85421337CA35E687CF3AF9F41B916AA5B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>blacklisted-diameter-parser</string>
+		</dict>
+	</array>
+</dict>
+</plist>
