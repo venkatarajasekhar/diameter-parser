@@ -10,6 +10,7 @@
 #define Dia_AVP_hpp
 
 #include <iostream>
+#include <exception>
 #include <iomanip>
 #include <string>
 #include <iostream>
@@ -72,6 +73,15 @@ using namespace boost;
 #define AVPTYPE_ENUMERATED				"Enumerated"
 
 using namespace AVP{
+
+struct AVPException : public exception
+{
+  const char * what () const throw ()
+  {
+    return "C++ Exception";
+  }
+};
+
 class AVPParser {
 public:
         typedef variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
