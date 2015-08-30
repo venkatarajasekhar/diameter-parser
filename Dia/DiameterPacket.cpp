@@ -9,8 +9,10 @@
 #include <iostream>
 #include "DiameterPacket.hpp"
 #include "IPPacket.hpp"
+#include "AVP.hpp"
 
 using namespace std;
+usin namespace AVP;
 
 //
 // Преобразовать тип к числу
@@ -29,6 +31,7 @@ int DiameterPacket::typeNameToNum(const std::string *atypeName) {
 	} else if (atypeName->compare(AVPTYPE_TIME) == 0) {
 		return AVPTYPE_N_TIME;
 	}
+	delete atypeName;
 	return 0;
 }
 
@@ -86,7 +89,7 @@ int DiameterPacket::parse_avp(const u_char *avp_data, const int avp_max_length, 
 		cerr << "AVP Code didn't found in dictionary: " << avp_code << " in packet " << packetNum << " payload " << payloadNumber << endl;
 		return -3;
 	}
-	
+	delete avp_data;
 	return avp_length;
 	
 }
@@ -163,11 +166,17 @@ int DiameterPacket::ParseDiameterPayload(pcap_pkthdr * header, const u_char *dat
 			cerr << "AVP parse error in packet " << aPacketNumber << " payload " << aPayloadNumber << endl;
 			return -4;
 		}
-
+                try{
 		fillAuxVariablesUsingAVP();
-		//cout << endl;
+                }
+                catch(AVPException& e)
+                {
+                 cout << "APIException caught(fillAuxVariablesUsingAVP)" << endl;
+                 cout << e.what() << endl;
+               }
+	 	//cout << endl;
 	}
-	
+	delete header;
 	return diameterLength;
 }
 
