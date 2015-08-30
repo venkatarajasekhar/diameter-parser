@@ -57,7 +57,13 @@ int AVPParser::parse_value(const unsigned char *data, const unsigned int len, co
 	
 	// Если тип avp групповой, то возвращаем код необходимости рекурсии
 	int typeGrouped = 0;
-	
+	try {
+             if(!data)
+             throw data;
+             } catch (const std::bad_alloc&) {
+             cout << "Pointer Exception caught" << endl;
+             }
+             
 	if (typeName.compare(AVPTYPE_UTF8STRING) == 0 || typeName.compare(AVPTYPE_DIAMETERIDENTITY) == 0) { //Type.compare(AVPTYPE_OCTETSTRING) == 0
 		string value;
 		stringstream ss;
