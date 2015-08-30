@@ -72,7 +72,7 @@ using namespace boost;
 #define AVPTYPE_ENUMERATED				"Enumerated"
 
 using namespace AVP{
-class AVP {
+class AVPParser {
 public:
         typedef variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
 	typedef tuple<std::string, long, std::string, AVPValue> AVPTuple;
