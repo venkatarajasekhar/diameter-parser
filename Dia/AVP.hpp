@@ -28,6 +28,9 @@
 #include "DiameterDictionary.hpp"
 extern DiameterDictionary diameterDictionary;
 
+using namespace std;
+using namespace boost;
+
 // Типы данных
 #define AVPTYPE_N_UNDEFINED				999
 #define AVPTYPE_UNDEFINED				"UndefinedType"
@@ -71,28 +74,25 @@ extern DiameterDictionary diameterDictionary;
 
 class AVP {
 public:
+        typedef variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
+	typedef tuple<std::string, long, std::string, AVPValue> AVPTuple;
 	AVP(): code(0), typeCode(0), isOK(0) {
 	};
-	
-	typedef boost::variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
-	typedef boost::tuple<std::string, long, std::string, AVPValue> AVPTuple;
-
-	std::string name;
-	long code;
-	std::string typeName;
-	long typeCode;
-	// Содержит название типа для Enum
-	std::string comment;
-	std::string displayName;
-	AVPValue avpValue;
-	// Результат разбора AVP
-	bool isOK;
-
-	std::string enumName;
-	
 	int parse_value(const unsigned char *data, const unsigned int len, const int level, const u_int packetNum, const u_int payloadNum);
 	long parseType();
 private:
+        string name;
+	long code;
+	string typeName;
+	long typeCode;
+	// Содержит название типа для Enum
+	string comment;
+	string displayName;
+	AVPValue avpValue;
+	// Результат разбора AVP
+	bool isOK;
+	string enumName;
+	
 	
 };
 
