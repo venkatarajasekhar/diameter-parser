@@ -57,7 +57,16 @@ public:
 		diameterCCOutputOctets = -1;
 		diameterTerminationCause = -1;
 	}
-	
+	//typedef boost::variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
+	//typedef boost::tuple<std::string, long, std::string> AVPTuple;
+	int ParseDiameterPayload(pcap_pkthdr * header, const u_char *data, const uint packetLength, const uint aPacketNumber, const uint aPayloadNumber);
+	void PrintPacket();
+	int typeNameToNum(const std::string *atypeName);
+	int parse_avp(const u_char *avp_data, const int avp_max_length, const int level, const u_int packetNum);
+	int parse_avp_array(const u_char *avp_array_data, const int avp_array_max_length, const int level, const u_int packetNum);
+	void fillAuxVariablesUsingAVP();
+private:
+        std::vector<AVP> avpVector;
 	u_int		payloadNumber;
 	u_int8_t	diameterVersion;
 	u_int16_t	diameterLength;
@@ -65,8 +74,7 @@ public:
 	u_int16_t	diameterCmdCode;
 	u_int32_t	diameterHopbyhopId;
 	u_int32_t	diameterEndtoendId;
-	
-	// Auxilary variables
+		// Auxilary variables
 	long diameterResultCode;			// 268
 	long diameterCCRequestType;		// 416
 	std::string diameterSessionId;			// 263
@@ -75,21 +83,6 @@ public:
 	long diameterCCInputOctets;		// 412
 	long diameterCCOutputOctets;		// 414
 	long diameterTerminationCause;		// 295
-	
-	
-	//typedef boost::variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
-	//typedef boost::tuple<std::string, long, std::string> AVPTuple;
-	std::vector<AVP> avpVector;
-	
-	int ParseDiameterPayload(pcap_pkthdr * header, const u_char *data, const uint packetLength, const uint aPacketNumber, const uint aPayloadNumber);
-	void PrintPacket();
-
-	int typeNameToNum(const std::string *atypeName);
-	int parse_avp(const u_char *avp_data, const int avp_max_length, const int level, const u_int packetNum);
-	int parse_avp_array(const u_char *avp_array_data, const int avp_array_max_length, const int level, const u_int packetNum);
-
-	void fillAuxVariablesUsingAVP();
-private:
 	
 };
 
