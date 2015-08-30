@@ -53,13 +53,13 @@ public:
 		Enum = aEnum;
 	}
 	
+	
+	
+private:
 	long Code;
 	std::string Name;
 	std::string Type;
 	avp_enum_type Enum;
-	
-private:
-	
 };
 
 
