@@ -71,7 +71,7 @@ using namespace boost;
 #define AVPTYPE_N_ENUMERATED			12
 #define AVPTYPE_ENUMERATED				"Enumerated"
 
-
+using namespace AVP{
 class AVP {
 public:
         typedef variant<std::string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
@@ -92,9 +92,8 @@ private:
 	// Результат разбора AVP
 	bool isOK;
 	string enumName;
-	
-	
 };
+}
 
 
 #endif
