@@ -89,27 +89,7 @@ public:
 		tcpHeaderLength = 0;
 		tcpPduSize = 0;
 	}
-	
-	u_int		packetNumber;
-	long		timeEpochSec;		// Epoch time, seconds
-	long		timeEpochUsec;	// Epoch time, microseconds
-	u_int		packetLength;			// Packet length
-	u_int		etherHeaderLength;
-    u_int	    ipHeaderLength;
-    u_int		ipLength;
-    u_int16_t   ipId;
-    u_int8_t    ipProto;
-    struct in_addr ipSrc, ipDst;
-	
-	u_int16_t	tcpSPort;			// source port
-	u_int16_t	tcpDPort;			// destination port
-	u_int32_t	tcpSeq;			// sequence number
-	bool		tcpFlagsReset;
-    u_int		tcpHeaderLength;
-	u_int		tcpPduSize;
-	
-	std::vector<DiameterPacket>	diameterArray;
-	
+
 	void ParsePacket(pcap_pkthdr * header, const u_char *data, const uint aPacketNumber);
 	void ParseDiameterPacket(pcap_pkthdr * header, const u_char *data, const uint packetLength, const uint aPacketNumber);
 
@@ -123,6 +103,25 @@ public:
 
 	
 private:
+	std::vector<DiameterPacket>	diameterArray;
+	u_int		packetNumber;
+	long		timeEpochSec;		// Epoch time, seconds
+	long		timeEpochUsec;	// Epoch time, microseconds
+	u_int		packetLength;			// Packet length
+	u_int		etherHeaderLength;
+        u_int	    ipHeaderLength;
+        u_int		ipLength;
+        u_int16_t   ipId;
+        u_int8_t    ipProto;
+        struct in_addr ipSrc, ipDst;
+	
+	u_int16_t	tcpSPort;			// source port
+	u_int16_t	tcpDPort;			// destination port
+	u_int32_t	tcpSeq;			// sequence number
+	bool		tcpFlagsReset;
+        u_int		tcpHeaderLength;
+	u_int		tcpPduSize;
+	
 	friend class boost::serialization::access; 
 	
 	template <typename Archive> 
