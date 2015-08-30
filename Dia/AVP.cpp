@@ -8,9 +8,10 @@
 
 #include "AVP.hpp"
 
-long AVP::parseType() {
-	using namespace std;
-	
+using namespace std;
+using namespace AVP{
+
+long AVPParser ::parseType() {
 	if (typeName.compare(AVPTYPE_UTF8STRING) == 0) {
 		typeCode = AVPTYPE_N_UTF8STRING;
 	} else if (typeName.compare(AVPTYPE_UNDEFINED) == 0) {
@@ -45,9 +46,7 @@ long AVP::parseType() {
 }
 
 
-int AVP::parse_value(const unsigned char *data, const unsigned int len, const int level, const u_int packetNum, const u_int payloadNum) {
-	using namespace std;
-	
+int AVPParser::parse_value(const unsigned char *data, const unsigned int len, const int level, const u_int packetNum, const u_int payloadNum) {
 	AVPValue v;
 	
 	// Функция Const, и я не могу поменять Name - это нужно для модификации Subscription-Id-Data в IMSI/MSISDN
@@ -66,12 +65,13 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 			ss << data[p];
 		}
 		ss >> value;
+		/* Please check the assignment with Variant type to string */
 		v = value;
 		//cout << value << endl;
 		
 		// Хак для записи IMSI и MSISDN из Subscription-Id-Type
 		// Если в Subscription-Id-Data длина данных 12, то это MSISDN, а если 15 - то IMSI
-		if (code==444) {
+		if (int code==444) {
 			if (value.length()==12) {
 				displayName = "Subscription-Id-MSISDN";
 			} else if (value.length()==15) {
@@ -82,7 +82,7 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 		
 		
 	} else if (typeName.compare(AVPTYPE_INTEGER32) == 0 || typeName.compare(AVPTYPE_APPID) == 0) {
-		int32_t	*ptrValue;
+		int32_t	*ptrValue = NULL;
 		int32_t	value;
 		if (len == sizeof(int32_t)) {
 			ptrValue = (int32_t *)data;
@@ -92,7 +92,7 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 			parseError = 1;
 		}
 	} else if (typeName.compare(AVPTYPE_INTEGER64) == 0) {
-		int64_t	*ptrValue;
+		int64_t	*ptrValue = NULL;
 		int64_t	value;
 		if (len == sizeof(int64_t)) {
 			ptrValue = (int64_t *)data;
@@ -103,7 +103,7 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 		}
 		
 	} else if (typeName.compare(AVPTYPE_UNSIGNED32) == 0 || typeName.compare(AVPTYPE_ENUMERATED) == 0) {
-		u_int32_t	*ptrValue;
+		u_int32_t	*ptrValue = NULL;
 		u_int32_t	value;
 		if (len == sizeof(u_int32_t)) {
 			ptrValue = (u_int32_t *)data;
@@ -122,7 +122,7 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 			parseError = 1;
 		}
 	} else if (typeName.compare(AVPTYPE_UNSIGNED64) == 0) {
-		uint64_t	*ptrValue;
+		uint64_t	*ptrValue = NULL;
 		uint64_t	value;
 		if (len == sizeof(uint64_t)) {
 			ptrValue = (uint64_t *)data;
@@ -133,7 +133,7 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 		}
 	} else if (typeName.compare(AVPTYPE_TIME) == 0) {
 		// The Time format is derived from the Unsigned32 AVP Base Format
-		uint32_t	*ptrValue;
+		uint32_t	*ptrValue = NULL;
 		uint32_t	value;
 		if (len == sizeof(uint32_t)) {
 			ptrValue = (uint32_t *)data;
@@ -150,11 +150,11 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 	} else if (typeName.compare(AVPTYPE_IPADDRESS) == 0) {
 		// Может быть обычный IP-адрес, а может быть c 2 байтами версии (Host-IP-Address)
 		if (len == sizeof(in_addr) || len == sizeof(in_addr)+2) {
-			in_addr *ptrValue;
+			in_addr *ptrValue = NULL;
 			in_addr value;
 			ptrValue = (in_addr *)(data + (len == sizeof(in_addr)?0:2) );
 
-			value = *ptrValue;
+			value = *ptrValue ;
 			
 			string str = ipaddr2string(value);
 			comment = str;
@@ -181,20 +181,33 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 	}
 	
 	avpValue = v;
+	try{
+	long ReturnValueTypeCode = parseType();
+	//is there any logic using return value of parsertype
 	
-	parseType();
 	
+	
+	}
+	catch(AVPException& e)
+        {
+           cout << "ParserException caught" << endl;
+           cout << e.what() << endl;
+           }
+       catch(std::exception& e)
+       {
+        //Other errors
+       }
 	switch (parseError) {
 			// Нет ошибок
 		case 0:
 			break;
 			// Несоответствие размера переменной его реальной длине
 		case 1:
-			std::cerr << "Parse error, length mismatch " << len << " in packet " << packetNum << " payload " << payloadNum << endl;
+			cerr << "Parse error, length mismatch " << len << " in packet " << packetNum << " payload " << payloadNum << endl;
 			break;
 			// Нет соответствующего Enumerated-значения
 		case 2:
-			std::cerr << "Parse error, problem with enumeration (" << name << "/" << avpValue << ") in packet " << packetNum << " payload " << payloadNum << endl;
+		        cerr << "Parse error, problem with enumeration (" << name << "/" << avpValue << ") in packet " << packetNum << " payload " << payloadNum << endl;
 			break;
 			
 		default:
@@ -203,4 +216,5 @@ int AVP::parse_value(const unsigned char *data, const unsigned int len, const in
 	
 	return typeGrouped;
 }
+}// namespace AVP 
 
