@@ -106,6 +106,7 @@ void IPPacket::ParsePacket(pcap_pkthdr * header, const u_char *data, const uint 
 		
 	}
 	//cout << endl;
+	delete header;
 }
 
 
@@ -153,6 +154,7 @@ void IPPacket::ParseDiameterPacket(pcap_pkthdr * header, const u_char *data, con
 		
 		currentPDUPosition += diameterLength;
 	} 
+	delete header;
 }
 
 
@@ -206,7 +208,7 @@ void IPPacket::PrintLegacyDiameter() {
 		}
 		
 		// Dec 13, 2011 16:24:04.
-		char buffer [80];
+		char buffer [80] = {0};
 		strftime (buffer, 80, "%b %d, %Y %X", localtime(&timeEpochSec));
 		string dStr(buffer); //asctime(gmtime((time_t *)&timeEpochSec))
 		//if(dStr.size() > 0) dStr.resize(dStr.size()-1);
