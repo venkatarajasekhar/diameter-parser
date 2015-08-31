@@ -42,31 +42,6 @@
  * Per RFC 791, September 1981.
  */
 #define	IPVERSION	4
-
-/*
- * Structure of an internet header, naked of options.
- *
- * We declare ip_len and ip_off to be short, rather than u_short
- * pragmatically since otherwise unsigned comparisons can result
- * against negative integers quite easily, and fail in subtle ways.
- */
-struct ip {
-	u_int8_t	ip_vhl;		/* header length, version */
-#define IP_V(ip)	(((ip)->ip_vhl & 0xf0) >> 4)
-#define IP_HL(ip)	((ip)->ip_vhl & 0x0f)
-	u_int8_t	ip_tos;		/* type of service */
-	u_int16_t	ip_len;		/* total length */
-	u_int16_t	ip_id;		/* identification */
-	u_int16_t	ip_off;		/* fragment offset field */
-#define	IP_DF 0x4000			/* dont fragment flag */
-#define	IP_MF 0x2000			/* more fragments flag */
-#define	IP_OFFMASK 0x1fff		/* mask for fragmenting bits */
-	u_int8_t	ip_ttl;		/* time to live */
-	u_int8_t	ip_p;		/* protocol */
-	u_int16_t	ip_sum;		/* checksum */
-	struct	in_addr ip_src,ip_dst;	/* source and dest address */
-};
-
 #define	IP_MAXPACKET	65535		/* maximum packet size */
 
 /*
@@ -120,25 +95,6 @@ struct ip {
 #define IPOPT_OFFSET		2		/* offset within option */
 #define	IPOPT_MINOFF		4		/* min value of above */
 
-/*
- * Time stamp option structure.
- */
-struct	ip_timestamp {
-	u_int8_t	ipt_code;	/* IPOPT_TS */
-	u_int8_t	ipt_len;	/* size of structure (variable) */
-	u_int8_t	ipt_ptr;	/* index of current entry */
-	u_int8_t	ipt_oflwflg;	/* flags, overflow counter */
-#define IPTS_OFLW(ip)	(((ipt)->ipt_oflwflg & 0xf0) >> 4)
-#define IPTS_FLG(ip)	((ipt)->ipt_oflwflg & 0x0f)
-	union ipt_timestamp {
-		u_int32_t ipt_time[1];
-		struct	ipt_ta {
-			struct in_addr ipt_addr;
-			u_int32_t ipt_time;
-		} ipt_ta[1];
-	} ipt_timestamp;
-};
-
 /* flag bits for ipt_flg */
 #define	IPOPT_TS_TSONLY		0		/* timestamps only */
 #define	IPOPT_TS_TSANDADDR	1		/* timestamps and addresses */
@@ -165,5 +121,49 @@ struct	ip_timestamp {
 
 /* in print-ip.c */
 extern u_int32_t ip_finddst(const struct ip *);
+/*
+ * Structure of an internet header, naked of options.
+ *
+ * We declare ip_len and ip_off to be short, rather than u_short
+ * pragmatically since otherwise unsigned comparisons can result
+ * against negative integers quite easily, and fail in subtle ways.
+ */
+struct ip {
+	u_int8_t	ip_vhl;		/* header length, version */
+#define IP_V(ip)	(((ip)->ip_vhl & 0xf0) >> 4)
+#define IP_HL(ip)	((ip)->ip_vhl & 0x0f)
+	u_int8_t	ip_tos;		/* type of service */
+	u_int16_t	ip_len;		/* total length */
+	u_int16_t	ip_id;		/* identification */
+	u_int16_t	ip_off;		/* fragment offset field */
+#define	IP_DF 0x4000			/* dont fragment flag */
+#define	IP_MF 0x2000			/* more fragments flag */
+#define	IP_OFFMASK 0x1fff		/* mask for fragmenting bits */
+	u_int8_t	ip_ttl;		/* time to live */
+	u_int8_t	ip_p;		/* protocol */
+	u_int16_t	ip_sum;		/* checksum */
+	struct	in_addr ip_src,ip_dst;	/* source and dest address */
+};
 
+
+
+
+/*
+ * Time stamp option structure.
+ */
+struct	ip_timestamp {
+	u_int8_t	ipt_code;	/* IPOPT_TS */
+	u_int8_t	ipt_len;	/* size of structure (variable) */
+	u_int8_t	ipt_ptr;	/* index of current entry */
+	u_int8_t	ipt_oflwflg;	/* flags, overflow counter */
+#define IPTS_OFLW(ip)	(((ipt)->ipt_oflwflg & 0xf0) >> 4)
+#define IPTS_FLG(ip)	((ipt)->ipt_oflwflg & 0x0f)
+	union ipt_timestamp {
+		u_int32_t ipt_time[1];
+		struct	ipt_ta {
+			struct in_addr ipt_addr;
+			u_int32_t ipt_time;
+		} ipt_ta[1];
+	} ipt_timestamp;
+};
 #endif
