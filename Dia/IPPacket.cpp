@@ -61,7 +61,7 @@ void IPPacket::ParsePacket(pcap_pkthdr * header, const u_char *data, const uint 
 	
 	// Prepare  ether_header
 	const struct ether_header *ethernet;
-	ethernet = (struct ether_header*)(data);
+	ethernet = static_cast< struct ether_header* >(data);
 	
 	// Frame data
 	packetLength = header->len;
@@ -71,7 +71,7 @@ void IPPacket::ParsePacket(pcap_pkthdr * header, const u_char *data, const uint 
 	
 	// IP data
 	const struct ip *ipHeader;
-	ipHeader = (struct ip*)(data + etherHeaderLength);
+	ipHeader = static_cast< struct ip* > (data + etherHeaderLength);
 	// Лёгкое откровение: header length in bytes = value set in ip_hl x 4 [each # counts for 4 octets]
 	ipHeaderLength = IP_HL(ipHeader)*4;
 	ipLength = ntohs(ipHeader->ip_len);
@@ -82,7 +82,7 @@ void IPPacket::ParsePacket(pcap_pkthdr * header, const u_char *data, const uint 
 	
 	// TCP data
 	const struct tcphdr *tcpHeader;
-	tcpHeader = (struct tcphdr*)(data + etherHeaderLength + ipHeaderLength);
+	tcpHeader = static_cast< struct tcphdr* > (data + etherHeaderLength + ipHeaderLength);
 	
 	tcpSPort = ntohs(tcpHeader->th_sport);
 	tcpDPort = ntohs(tcpHeader->th_dport);
@@ -173,8 +173,8 @@ void IPPacket::PrintPacket() {
 	cout << setw(FORMAT_FIELD_1) << left << "ip.dst" << setw(FORMAT_FIELD_2) << left << ipaddr2string(ipDst) << endl;
 
 	cout << setw(FORMAT_FIELD_1) << left << "tcp.flags.reset" << setw(FORMAT_FIELD_2) << left << (tcpFlagsReset ? "True" : "False" ) << endl;
-
-	for (vector<DiameterPacket>::iterator iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
+        vector<DiameterPacket>::iterator iter;
+	for ( iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
 		cout << string(FORMAT_HEADER, '#') << endl;
 		iter->PrintPacket();
 	}
@@ -183,7 +183,8 @@ void IPPacket::PrintPacket() {
 }
 
 void IPPacket::PrintPacketSeparated() {
-	for (vector<DiameterPacket>::iterator iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
+	vector<DiameterPacket>::iterator iter; 
+	for (iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
 		cout << string(FORMAT_HEADER, '#') << endl;
 		cout << setw(FORMAT_FIELD_1) << left << "frame.number" << setw(FORMAT_FIELD_2) << left << packetNumber << endl;
 		cout << setw(FORMAT_FIELD_1) << left << "frame.length" << setw(FORMAT_FIELD_2) << left << packetLength << endl;
