@@ -42,7 +42,7 @@ extern DiameterDictionary diameterDictionary;
 // Functions
 
 
-struct packet {
+typedef struct  {
     long		time_epoch_sec;		// Epoch time, seconds
 	long		time_epoch_usec;	// Epoch time, microseconds
 	u_int		len;				// Packet length
@@ -68,7 +68,7 @@ struct packet {
 	u_int32_t	diameter_hopbyhopid;
 	u_int32_t	diameter_endtoendid;
 	
-};
+}S_IPpacket;
 
 class IPPacket {
 	std::vector<DiameterPacket>	diameterArray;
