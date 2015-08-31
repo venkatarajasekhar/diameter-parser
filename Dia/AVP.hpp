@@ -83,14 +83,6 @@ struct AVPException : public exception
 };
 
 class AVPParser {
-public:
-        typedef variant<string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
-	typedef tuple<string, long, string, AVPValue> AVPTuple;
-	AVP(): code(0), typeCode(0), isOK(0) {
-	};
-	int parse_value(const unsigned char *data, const unsigned int len, const int level, const u_int packetNum, const u_int payloadNum);
-	long parseType();
-private:
         string name;
 	long code;
 	string typeName;
@@ -102,6 +94,14 @@ private:
 	// Результат разбора AVP
 	bool isOK;
 	string enumName;
+public:
+        typedef variant<string, int32_t, int64_t, uint32_t, uint64_t> AVPValue;
+	typedef tuple<string, long, string, AVPValue> AVPTuple;
+	AVP(): code(0), typeCode(0), isOK(0) {
+	};
+	int parse_value(const unsigned char *data, const unsigned int len, const int level, const u_int packetNum, const u_int payloadNum);
+	long parseType();
+
 };
 }
 
