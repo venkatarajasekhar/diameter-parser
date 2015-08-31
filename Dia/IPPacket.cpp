@@ -57,28 +57,30 @@ int IPPacket::parsePcapFile(const std::string& file) {
 
 void IPPacket::ParsePacket(pcap_pkthdr * header, const u_char *data, const uint aPacketNumber)
 {
-	packetNumber = aPacketNumber;
+	IPPacket *IPPacketObj; //Pointer to Object for the Class IPPacket
+	S_IPpacket *IPpacketVar; //Pointer to Structure Variable for S_IPpacket
 	
-	// Prepare  ether_header
+	packetNumber = aPacketNumber;
+		// Prepare  ether_header
 	const struct ether_header *ethernet;
 	ethernet = static_cast< struct ether_header* >(data);
 	
 	// Frame data
-	packetLength = header->len;
-	timeEpochSec = header->ts.tv_sec;
-	timeEpochUsec = header->ts.tv_usec;
-	etherHeaderLength = ETHER_HDRLEN;
+	IPPacketObj->packetLength = dynamic_cast<IPPacket *> header->len;
+	IPPacketObj->timeEpochSec = dynamic_cast<IPPacket *> header->ts.tv_sec;
+	IPPacketObj->timeEpochUsec = dynamic_cast<IPPacket *>header->ts.tv_usec;
+	IPpacketVar->etherHeaderLength = static_cast<IPpacketVar *>ETHER_HDRLEN;
 	
 	// IP data
 	const struct ip *ipHeader;
 	ipHeader = static_cast< struct ip* > (data + etherHeaderLength);
 	// Лёгкое откровение: header length in bytes = value set in ip_hl x 4 [each # counts for 4 octets]
-	ipHeaderLength = IP_HL(ipHeader)*4;
-	ipLength = ntohs(ipHeader->ip_len);
-	ipId = ntohs(ipHeader->ip_id);
-	ipProto = ipHeader->ip_p;
-	ipSrc = ipHeader->ip_src;
-	ipDst = ipHeader->ip_dst;
+	IPpacketVar->ipHeaderLength = IP_HL(ipHeader)*4;
+	IPpacketVar->ipLength = ntohs(ipHeader->ip_len);
+	IPpacketVar->ipId = ntohs(ipHeader->ip_id);
+	IPpacketVar->ipProto = static_cast<IPpacketVar *>ipHeader->ip_p;
+	IPpacketVar->ipSrc = static_cast<IPpacketVar *>ipHeader->ip_src;
+	IPpacketVar->ipDst = static_cast<IPpacketVar *>ipHeader->ip_dst;
 	
 	// TCP data
 	const struct tcphdr *tcpHeader;
