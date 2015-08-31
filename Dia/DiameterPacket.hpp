@@ -41,8 +41,25 @@
 extern DiameterDictionary diameterDictionary;
 
 class DiameterPacket {
+        std::vector<AVP> avpVector;
+	u_int		payloadNumber;
+	u_int8_t	diameterVersion;
+	u_int16_t	diameterLength;
+	u_int8_t	diameterRequest;
+	u_int16_t	diameterCmdCode;
+	u_int32_t	diameterHopbyhopId;
+	u_int32_t	diameterEndtoendId;
+		// Auxilary variables
+	long diameterResultCode;			// 268
+	long diameterCCRequestType;		// 416
+	std::string diameterSessionId;			// 263
+	std::string diameterSubscriptionId;		// 444/Subscription-Id-IMSI
+	std::string diameterFramedIPAddress;	// 8
+	long diameterCCInputOctets;		// 412
+	long diameterCCOutputOctets;		// 414
+	long diameterTerminationCause;		// 295
 public:
-	DiameterPacket() {
+	        DiameterPacket() {
 		payloadNumber = 0;
 		diameterVersion = 0;
 		diameterLength = 0;
@@ -65,25 +82,6 @@ public:
 	int parse_avp(const u_char *avp_data, const int avp_max_length, const int level, const u_int packetNum);
 	int parse_avp_array(const u_char *avp_array_data, const int avp_array_max_length, const int level, const u_int packetNum);
 	void fillAuxVariablesUsingAVP();
-private:
-        std::vector<AVP> avpVector;
-	u_int		payloadNumber;
-	u_int8_t	diameterVersion;
-	u_int16_t	diameterLength;
-	u_int8_t	diameterRequest;
-	u_int16_t	diameterCmdCode;
-	u_int32_t	diameterHopbyhopId;
-	u_int32_t	diameterEndtoendId;
-		// Auxilary variables
-	long diameterResultCode;			// 268
-	long diameterCCRequestType;		// 416
-	std::string diameterSessionId;			// 263
-	std::string diameterSubscriptionId;		// 444/Subscription-Id-IMSI
-	std::string diameterFramedIPAddress;	// 8
-	long diameterCCInputOctets;		// 412
-	long diameterCCOutputOctets;		// 414
-	long diameterTerminationCause;		// 295
-	
 };
 
 
