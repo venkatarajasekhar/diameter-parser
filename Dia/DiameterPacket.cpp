@@ -183,7 +183,8 @@ int DiameterPacket::ParseDiameterPayload(pcap_pkthdr * header, const u_char *dat
 
 // Заполнить вспомогательные поля
 void DiameterPacket::fillAuxVariablesUsingAVP() {
-	for (vector<AVP>::iterator iter = avpVector.begin(); iter != avpVector.end(); ++iter) {
+	vector<AVPParser>::iterator iter;
+	for ( iter = avpVector.begin(); iter != avpVector.end(); ++iter) {
 		switch (iter->code) {
 			case 268:
 				diameterResultCode = boost::get<u_int32_t>(iter->avpValue);
