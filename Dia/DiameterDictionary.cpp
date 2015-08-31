@@ -7,15 +7,14 @@
 //
 
 #include <iostream>
-
 #include "DiameterDictionary.hpp"
-
+using namespace std;
 /***********************************
  * Class members definition
  */
 std::ostream& operator<< (std::ostream &out, const DiameterDictionary &aDiameterDictionary) {
 	
-	using namespace std;
+	
 	
 	std::map<long, AVPItem>::const_iterator map_it = aDiameterDictionary.avpDictionary.begin();
 	while (map_it != aDiameterDictionary.avpDictionary.end()) {
@@ -40,7 +39,7 @@ std::ostream& operator<< (std::ostream &out, const DiameterDictionary &aDiameter
 
 int DiameterDictionary::load_xml_text(const std::string& input_xml_text) {
     using namespace rapidxml;
-    using namespace std;
+    
 	
     vector<char> xml_copy(input_xml_text.begin(), input_xml_text.end());
     xml_copy.push_back('\0');
@@ -125,7 +124,7 @@ int DiameterDictionary::load_xml_text(const std::string& input_xml_text) {
 }
 
 int DiameterDictionary::load_xml_file(const char* input_xml_file) {
-	using namespace std;
+
 	
     string input_dict;
     string line;
