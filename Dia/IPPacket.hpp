@@ -40,7 +40,7 @@ extern DiameterDictionary diameterDictionary;
 
 //
 // Functions
-int parsePcapFile(const std::string& file);
+
 
 struct packet {
     long		time_epoch_sec;		// Epoch time, seconds
@@ -71,38 +71,6 @@ struct packet {
 };
 
 class IPPacket {
-public:
-	IPPacket() {
-		packetNumber = 0;
-		timeEpochSec = 0;
-		timeEpochUsec = 0;
-		packetLength = 0;
-		etherHeaderLength = 0;
-		ipHeaderLength = 0;
-		ipLength = 0;
-		ipId = 0;
-		ipProto = 0;
-		tcpSPort = 0;
-		tcpDPort = 0;
-		tcpSeq = 0;
-		tcpFlagsReset = 0;
-		tcpHeaderLength = 0;
-		tcpPduSize = 0;
-	}
-
-	void ParsePacket(pcap_pkthdr * header, const u_char *data, const uint aPacketNumber);
-	void ParseDiameterPacket(pcap_pkthdr * header, const u_char *data, const uint packetLength, const uint aPacketNumber);
-
-	void PrintPacket();
-	// Каждый diameter payload сопровождается заголовком IP-пакета
-	void PrintPacketSeparated();
-	
-	// Печать diameter как на 3g-cap
-	void PrintLegacyDiameter();
-
-
-	
-private:
 	std::vector<DiameterPacket>	diameterArray;
 	u_int		packetNumber;
 	long		timeEpochSec;		// Epoch time, seconds
@@ -130,7 +98,32 @@ private:
 		ar & packetNumber & timeEpochSec & timeEpochUsec & ipSrc.s_addr & ipDst.s_addr; 
 	} 
 
-	
+public:
+	IPPacket() {
+		packetNumber = 0;
+		timeEpochSec = 0;
+		timeEpochUsec = 0;
+		packetLength = 0;
+		etherHeaderLength = 0;
+		ipHeaderLength = 0;
+		ipLength = 0;
+		ipId = 0;
+		ipProto = 0;
+		tcpSPort = 0;
+		tcpDPort = 0;
+		tcpSeq = 0;
+		tcpFlagsReset = 0;
+		tcpHeaderLength = 0;
+		tcpPduSize = 0;
+	}
+	int parsePcapFile(const std::string& file);
+	void ParsePacket(pcap_pkthdr * header, const u_char *data, const uint aPacketNumber);
+	void ParseDiameterPacket(pcap_pkthdr * header, const u_char *data, const uint packetLength, const uint aPacketNumber);
+	void PrintPacket();
+	// Каждый diameter payload сопровождается заголовком IP-пакета
+	void PrintPacketSeparated();
+	// Печать diameter как на 3g-cap
+	void PrintLegacyDiameter();
 };
 
 
