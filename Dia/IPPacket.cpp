@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int parsePcapFile(const std::string& file) {
+int IPPacket::parsePcapFile(const std::string& file) {
     char errbuff[PCAP_ERRBUF_SIZE];
 	
     pcap_t * pcap = pcap_open_offline(file.c_str(), errbuff);
@@ -21,12 +21,11 @@ int parsePcapFile(const std::string& file) {
 		return -1;
 	}
 	
-    assert(pcap != NULL);
+    //assert(pcap != NULL);
 	
-    struct pcap_pkthdr *header;
-    const u_char *data;
+    struct pcap_pkthdr *header = NULL;
+    const u_char *data = NULL;
 	u_int packetCount = 0;
-	
 	vector<IPPacket>packets;
     
     while (pcap_next_ex(pcap, &header, &data) >= 0)
@@ -45,7 +44,8 @@ int parsePcapFile(const std::string& file) {
 
 	//std::ofstream filearchive("/Users/ctrld/Documents/Development/Dia/Data/1seria01.txt"); 
 	//boost::archive::text_oarchive oa(filearchive);
-	for (vector<IPPacket>::iterator iter = packets.begin(); iter != packets.end(); ++iter) {
+	vector<IPPacket>::iterator iter;
+	for (iter = packets.begin(); iter != packets.end(); ++iter) {
 		//iter->PrintPacketSeparated();
 		iter->PrintLegacyDiameter();
 		//oa << *iter;
@@ -179,7 +179,7 @@ void IPPacket::PrintPacket() {
 		iter->PrintPacket();
 	}
 	
-	std::cout << std::endl;
+//	std::cout << std::endl;
 }
 
 void IPPacket::PrintPacketSeparated() {
@@ -196,13 +196,14 @@ void IPPacket::PrintPacketSeparated() {
 		
 		cout << setw(FORMAT_FIELD_1) << left << "tcp.flags.reset" << setw(FORMAT_FIELD_2) << left << (tcpFlagsReset ? "True" : "False" ) << endl;
 		iter->PrintPacket();
-		std::cout << std::endl;
+	//	std::cout << std::endl;
 	}	
 }
 
 
 void IPPacket::PrintLegacyDiameter() {
-	for (vector<DiameterPacket>::iterator iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
+	vector<DiameterPacket>::iterator iter;
+	for (iter = diameterArray.begin(); iter != diameterArray.end(); ++iter) {
 		if (iter->diameterCmdCode != 272) {
 			continue;
 		}
@@ -242,6 +243,6 @@ void IPPacket::PrintLegacyDiameter() {
 
 		if (iter->diameterTerminationCause != -1)
 			cout << iter->diameterTerminationCause;
-		cout << endl;
+	//	cout << endl;
 	}	
 }
